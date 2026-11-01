@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WeatherOf Kakkanad</title>
+    <title>SkyCast</title>
     <link rel="icon" type="image/x-icon" href="./Images/weather-favicon.png">
 
     <!-- bootstrap CDN -->
@@ -44,45 +44,53 @@
     </div>
 
     <!-- Header -->
-    <header class="header">
 
-        <div class="header-container">
-
-            <!-- Logo -->
-            <a href="#" class="logo">
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container-fluid ">
+    
+      <a href="#" class="navbar-brand logo">
                 <div class="logo-icon">
                     <i class="bi bi-cloud-sun-fill"></i>
                 </div>
 
-                <span>WeatherOf <span class="logo-blue">Kakkanad</span></span>
+                <span>SKY<span class="logo-blue">CAST</span></span>
             </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse justify-content-center navbar-collapse " id="navbarTogglerDemo02">
+      <ul class="navbar-nav  mb-2 mb-lg-0 ">
+        <li class="nav-item">
+          <a class="nav-link navlink" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link navlink"  href="#weather-details">WeatherDetails</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-            <!-- Navigation -->
-            <nav class="navigation">
-                <a href="#" class="nav-link active">Today</a>
-                <a href="#" class="nav-link">About</a>
-            </nav>
+    <!-- Main -->
 
+    <main class="main-container">
+        <div class="d-flex justify-content-center mb-3">
             <!-- Search -->
             <form class="search-form">
 
                 <i class="bi bi-search search-icon"></i>
 
-                <input class="" type="text" placeholder="Search city..." aria-label="Search city">
+                <input onkeydown="if(event.key === 'Enter') { event.preventDefault(); getWeatherDetails(); }"
+                    id="cityInput" value="kakkanad" class="" type="text" placeholder="Search city..."
+                    aria-label="Search city">
 
-                <button type="submit" aria-label="Search">
+                <button onclick="getWeatherDetails()" type="button" aria-label="Search">
                     <i class="bi bi-search"></i>
                 </button>
 
             </form>
-
         </div>
 
-    </header>
-
-    <!-- Main -->
-
-    <main class="main-container">
         <section class="weather-card">
             <div class="weather-detail">
 
@@ -93,11 +101,11 @@
                         <h2 id="cityname"></h2>
                         <div class="date-time">
                             <p id="date" class="date mx-2"></p>
-                                
-                                <span>•</span>
-                            <p id="time" class="mx-2">08:42 AM </p>
 
-                            
+                            <span>•</span>
+                            <p id="time" class="mx-2"></p>
+
+
                         </div>
 
 
@@ -108,11 +116,33 @@
                     <span></span>
                 </div>
 
-                <h3 id="weather-description" class="weather-description">Partly cloudy</h3>
+                <h3 id="weather-description" class="weather-description"></h3>
 
                 <p id="feels-like" class="feels-like"></p>
 
             </div>
+
+
+            <div class="sun-time-container">
+                <div class="sun-time">
+                    <i class="bi bi-sunrise-fill"></i>
+                    <div>
+                        <p>Sunrise</p>
+                        <h4 id="sunrise">--:-- AM</h4>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="sun-time">
+                    <i class="bi bi-sunset-fill"></i>
+                    <div>
+                        <p>Sunset</p>
+                        <h4 id="sunset">--:-- PM</h4>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <section class="weather-stats">
@@ -171,7 +201,7 @@
             </article>
         </section>
 
-        <section class="weather-details">
+        <section id="weather-details" class="weather-details">
 
             <h2>Weather Details</h2>
             <div class="detail-container">
@@ -209,6 +239,8 @@
     </main>
 
     <script src="./script.js"></script>
+    <!-- bootstrap script -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
